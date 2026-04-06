@@ -1,0 +1,11 @@
+<input
+  type="button"
+  [value]="action"
+  class="h-6 w-16 rounded-sm cursor-pointer text-white"
+  [ngClass]="{
+    'bg-red-500': action === 'Delete',
+    'bg-green-500': action === 'Save',
+    'bg-purple-500': action === 'Edit',
+  }"
+  (click)="emitAction()"
+/>
