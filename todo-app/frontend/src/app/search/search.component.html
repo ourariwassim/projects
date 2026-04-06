@@ -1,0 +1,22 @@
+<div class="h-full flex flex-col items-center gap-6">
+  <h1 class="text-3xl">Todo App</h1>
+  <input
+    type="text"
+    placeholder="Enter a task"
+    class="w-1/2 h-10 border border-gray-200 outline-0 rounded-sm pl-4"
+    [(ngModel)]="content"
+  />
+  <input
+    type="button"
+    value="Add task"
+    class="w-1/2 bg-linear-to-r from-purple-500 to-blue-500 text-white h-10 rounded-sm"
+    (click)="addTask()"
+  />
+  @for (line of lines; track $index) {
+    <app-line
+      class="w-1/2"
+      [content]="line"
+      (actionEvent)="actionEvent($event, $index)"
+    ></app-line>
+  }
+</div>
