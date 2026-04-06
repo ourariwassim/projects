@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: root
+    volumes:
+      - db3:/var/lib/postgresql
+  pg:
+    image: dpage/pgadmin4
+    ports:
+      - 80:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    volumes:
+      - pg3:/var/lib/pgadmin
+volumes:
+  pg3:
+  db3:
