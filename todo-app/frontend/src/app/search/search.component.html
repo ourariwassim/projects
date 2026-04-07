@@ -12,11 +12,13 @@
     class="w-1/2 bg-linear-to-r from-purple-500 to-blue-500 text-white h-10 rounded-sm"
     (click)="addTask()"
   />
-  @for (line of lines; track $index) {
+  @for (line of lines; track line.id) {
     <app-line
       class="w-1/2"
-      [content]="line"
-      (actionEvent)="actionEvent($event, $index)"
+      [content]="line.content"
+      (actionEvent)="actionEvent($event, line.id)"
+      (saved)="saveContent($event)"
+      [EditActivated]="line.id == editingId ? false : true"
     ></app-line>
   }
 </div>
