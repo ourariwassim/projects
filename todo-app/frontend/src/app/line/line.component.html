@@ -1,7 +1,22 @@
 <div class="flex justify-between bg-gray-100 w-full px-6 h-12 items-center">
-  <p>{{ content }}</p>
+  @if (EditActivated) {
+    <p>{{ content }}</p>
+  }
+  @if (!EditActivated) {
+    <input
+      type="text"
+      autofocus
+      class="outline-none h-12"
+      [(ngModel)]="content"
+      (blur)="test()"
+    />
+  }
+
   <div class="flex gap-3">
-    <app-button [action]="'Edit'" (ActionEvent)="action($event)"></app-button>
+    <app-button
+      [action]="EditActivated ? 'Edit' : 'Save'"
+      (ActionEvent)="action($event)"
+    ></app-button>
     <app-button [action]="'Delete'" (ActionEvent)="action($event)"></app-button>
   </div>
 </div>
