@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-signup',
   imports: [ButtonComponent],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.css',
 })
-export class LoginComponent {}
+export class SignupComponent {}
