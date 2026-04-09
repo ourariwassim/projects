@@ -4,6 +4,7 @@ import { NgClass } from '@angular/common';
 import { Title } from '@angular/platform-browser';
 import { CardComponent } from '../card/card.component';
 import { FooterComponent } from '../footer/footer.component';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { FooterComponent } from '../footer/footer.component';
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  constructor(private readonly router: Router) {}
   categories = ['All', 'Technology', 'Startup', 'Lifestyle', 'Finance'];
   categorieSelected = 'All';
   changeCategories(cat: string) {
@@ -50,4 +52,7 @@ export class HomeComponent {
       image: 'bloc_pic_5.png',
     },
   ];
+  openLogin() {
+    this.router.navigate(['login']);
+  }
 }
