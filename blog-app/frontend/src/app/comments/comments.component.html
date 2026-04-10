@@ -1,0 +1,66 @@
+<div class="p-10 w-full h-full bg-blue-50/50">
+  <div class="w-full h-full">
+    <div class="w-full flex mt-8 items-center gap-150">
+      <div>Comments</div>
+      <div class="flex gap-4">
+        <app-button
+          [variant]="allComments ? 'secondary' : 'other'"
+          [size]="'sm'"
+          (click)="changeToAllComment()"
+          >All comments</app-button
+        >
+        <app-button
+          [variant]="allComments ? 'other' : 'secondary'"
+          [size]="'sm'"
+          (click)="changeToMyComment()"
+          >My comments</app-button
+        >
+      </div>
+    </div>
+    <table class="text-left w-2/3 mt-4">
+      <thead>
+        <tr>
+          <th class="px-2 py-4">#</th>
+          <th class="px-2 py-4">Name&comment</th>
+          <th class="px-2 py-4">Date</th>
+          <th class="px-2 py-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        @for (blog of commentByBlog; track $index) {
+          @if (blog.comment.length != 0) {
+            <tr class="px-2 py-4">
+              <td><span class="font-bold">Blog:</span> {{ blog.title }}</td>
+            </tr>
+
+            @for (comment of blog.comment; track $index) {
+              <tr>
+                <td class="px-2 py-4"></td>
+                <td class="px-2 py-4">
+                  <div class="text-sm">
+                    <span class="font-bold">Name:</span>
+                    {{ comment.user.email }}
+                  </div>
+                  <div class="text-sm">
+                    <span class="font-bold">Comment:</span>
+                    {{ comment.content }}
+                  </div>
+                </td>
+                <td class="px-2 py-4">{{ comment.created.split("T")[0] }}</td>
+                <td class="px-2 py-4">
+                  <img
+                    src="bin_icon.svg"
+                    class="cursor-pointer w-5 h-5"
+                    alt=""
+                    srcset=""
+                    (click)="deleteComment(comment.id)"
+                  />
+                </td>
+              </tr>
+            }
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

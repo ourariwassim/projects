@@ -17,9 +17,9 @@ export class ButtonComponent {
 
   buttonVariant: Record<variant, string> = {
     primary: ' bg-primary text-white hover:bg-blue-800',
-    secondary: ' bg-blue-500 text-white',
+    secondary: 'bg-white text-primary border border-primary',
     link: 'hover:bg-primary hover:text-white',
-    other: ' bg-blue-900 text-white',
+    other: '  text-black border border-black',
   };
   buttonRounded: Record<rounded, string> = {
     fully: 'rounded-full',

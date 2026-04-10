@@ -2,6 +2,11 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
+import { AddBlogComponentComponent } from './add-blog-component/add-blog-component.component';
+import { BlogListComponent } from './blog-list/blog-list.component';
+import { CommentsComponent } from './comments/comments.component';
 
 export const routes: Routes = [
   {
@@ -15,5 +20,16 @@ export const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent,
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    children: [
+      { path: '', component: DashboardHomeComponent },
+      { path: 'home', component: DashboardHomeComponent },
+      { path: 'addBlog', component: AddBlogComponentComponent },
+      { path: 'blogList', component: BlogListComponent },
+      { path: 'comment', component: CommentsComponent },
+    ],
   },
 ];

@@ -60,4 +60,11 @@ export class commentsService {
   deleteComment(commentId: string) {
     return this.commentRep.delete({ id: commentId });
   }
+  async commentCount(userId: string) {
+    return {
+      count: await this.commentRep.count({
+        where: { blog: { user: { id: userId } } },
+      }),
+    };
+  }
 }

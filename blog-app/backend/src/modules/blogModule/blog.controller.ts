@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
   Post,
@@ -32,5 +33,24 @@ export class blogController {
   @Get('getLatestBlogs/:id')
   getLatestBlogsById(@Param('id') userId: string) {
     return this.blogService.getLatestBlogsById(userId);
+  }
+
+  @Get('getBlogCount/:id')
+  getBlogCount(@Param('id') userId: string) {
+    return this.blogService.getBlogCount(userId);
+  }
+
+  @Delete('deleteBlog/:id')
+  deleteBlog(@Param('id') blogId: string) {
+    return this.blogService.deleteBlog(blogId);
+  }
+
+  @Get('getCommentByBlog/:id')
+  getCommentByBlog(@Param('id') userId: string) {
+    return this.blogService.getCommentByBlog(userId);
+  }
+  @Get('getUserComments/:id')
+  getUserComments(@Param('id') userId: string) {
+    return this.blogService.getUserComments(userId);
   }
 }

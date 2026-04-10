@@ -42,4 +42,9 @@ export class commentController {
   deleteComment(@Param('id') id: string) {
     return this.commentService.deleteComment(id);
   }
+
+  @Get('commentCount/:id')
+  commentCount(@Param('id') userId: string) {
+    return this.commentService.commentCount(userId);
+  }
 }

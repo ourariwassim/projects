@@ -1,0 +1,62 @@
+<div class="p-10 w-full h-full bg-blue-50/50">
+  <div class="w-full h-full">
+    <div class="flex gap-4">
+      <div
+        class="bg-white h-26 w-1/6 flex items-center pl-6 shadow-sm rounded-lg cursor-pointer hover:scale-105 duration-300"
+      >
+        <div>
+          <img src="dashboard_icon_1.svg" alt="" />
+        </div>
+        <div class="flex flex-col pl-4">
+          <div class="text-2xl">{{ blogCount }}</div>
+          <div class="text-gray-500">Blogs</div>
+        </div>
+      </div>
+      <div
+        class="bg-white h-26 w-1/6 flex items-center pl-6 shadow-sm rounded-lg cursor-pointer hover:scale-105 duration-300"
+      >
+        <div>
+          <img src="dashboard_icon_1.svg" alt="" />
+        </div>
+        <div class="flex flex-col pl-4">
+          <div class="text-2xl">{{ commentCount }}</div>
+          <div class="text-gray-500">Comments</div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full flex mt-8 items-center">
+      <img src="dashboard_icon_4.svg" alt="" srcset="" class="pr-4" />
+      <div>Latest Blogs</div>
+    </div>
+    <table class="text-left w-2/3 mt-4">
+      <thead>
+        <tr>
+          <th class="px-2 py-4">#</th>
+          <th class="px-2 py-4">BlogTitle</th>
+          <th class="px-2 py-4">Date</th>
+          <th class="px-2 py-4">Category</th>
+          <th class="px-2 py-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="">
+        @for (blog of blogs; track blog.id) {
+          <tr class="border-y border-gray-300">
+            <td class="px-2 py-4">{{ $index + 1 }}</td>
+            <td class="px-2 py-4">{{ blog.title }}</td>
+            <td class="px-2 py-4">{{ blog.created.split("T")[0] }}</td>
+            <td class="px-2 py-4 text-green-500">{{ blog.category }}</td>
+            <td class="px-2 py-4">
+              <img
+                src="cross_icon.svg"
+                class="cursor-pointer"
+                alt=""
+                srcset=""
+                (click)="deleteBlog(blog.id)"
+              />
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -33,9 +33,34 @@ export class blogService {
     return this.blogRep.save(result);
   }
   getLatestBlogsById(userId) {
-    return this.blogRep.find({ order: { created: 'DESC' }, take: 5 });
+    return this.blogRep.find({
+      where: { user: { id: userId } },
+      order: { created: 'DESC' },
+      take: 5,
+    });
   }
   getBlogById(blogId: string) {
     return this.blogRep.findOneBy({ id: blogId });
+  }
+  async getBlogCount(userId: string) {
+    return {
+      count: await this.blogRep.count({ where: { user: { id: userId } } }),
+    };
+  }
+  deleteBlog(blogId: string) {
+    return this.blogRep.delete({ id: blogId });
+  }
+
+  async getCommentByBlog(userId: string) {
+    return this.blogRep.find({
+      where: { user: { id: userId } },
+      relations: ['comment', 'comment.user'],
+    });
+  }
+  getUserComments(userId: string) {
+    return this.blogRep.find({
+      where: { comment: { user: { id: userId } } },
+      relations: ['comment', 'comment.user'],
+    });
   }
 }

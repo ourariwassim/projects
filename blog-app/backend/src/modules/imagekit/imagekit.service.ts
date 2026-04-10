@@ -18,7 +18,7 @@ export class imagekitService {
 
   uploadImage(file: multer.file, blogId: string) {
     this.imageKit.upload({
-      file: createReadStream(file.path),
+      file: file.buffer,
       fileName: 'image' + blogId,
     });
   }

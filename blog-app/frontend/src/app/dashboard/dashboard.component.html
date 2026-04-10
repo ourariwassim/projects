@@ -1,0 +1,28 @@
+<div class="h-screen">
+  <div
+    class="h-1/12 flex justify-between items-center border-b border-gray-300 px-20"
+  >
+    <img src="logo.svg" alt="" srcset="" height="220" width="220" />
+    <app-button (click)="logout()"> Logout </app-button>
+  </div>
+  <div class="h-11/12 flex">
+    <div class="w-1/6 h-full border-r border-gray-300 flex flex-col">
+      <br />
+      @for (link of links; track $index) {
+        <div
+          class="flex pl-10 cursor-pointer h-1/18 items-center"
+          [ngClass]="
+            isActive == $index ? 'bg-primary/10 border-r-4 border-primary' : ''
+          "
+          (click)="changeHover($index)"
+        >
+          <img [src]="link.src" alt="" height="20" width="20" />
+          <a class="pl-4">{{ link.text }}</a>
+        </div>
+      }
+    </div>
+    <div class="w-full h-full">
+      <router-outlet> </router-outlet>
+    </div>
+  </div>
+</div>

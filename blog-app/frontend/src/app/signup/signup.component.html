@@ -13,15 +13,19 @@
       type="text"
       class="placeholder-gray-500 outline-none border-b-2 border-gray-300"
       placeholder="your email id"
+      #email
     />
     <div>Password</div>
     <input
       type="password"
       class="placeholder-gray-500 outline-none border-b-2 border-gray-300"
       placeholder="your password"
+      #password
     />
     <div class="flex justify-center mt-6">
-      <app-button [size]="'md'">Create account</app-button>
+      <app-button [size]="'md'" (click)="signUp(email.value, password.value)"
+        >Create account</app-button
+      >
     </div>
   </div>
 </div>
