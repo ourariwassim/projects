@@ -53,4 +53,17 @@ export class blogController {
   getUserComments(@Param('id') userId: string) {
     return this.blogService.getUserComments(userId);
   }
+  @Get('getAllBlogs/:category')
+  getAllBlogs(@Param('category') cat: string) {
+    return this.blogService.getAllBlogs(cat);
+  }
+  @Get('getBlogById/:id')
+  getBlogById(@Param('id') id: string) {
+    return this.blogService.getBlogById(id);
+  }
+  @Post('generateBlog')
+  generateBlog(@Body() data: { content: string }) {
+    console.log(data.content);
+    return this.blogService.generateBlog(data.content);
+  }
 }

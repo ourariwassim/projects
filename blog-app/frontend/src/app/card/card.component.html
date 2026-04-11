@@ -1,14 +1,14 @@
 <div class="rounded-lg cursor-pointer *:">
-  <img src="blog_pic_1.png" alt="" srcset="" class="rounded-lg" />
+  <img [src]="image" alt="" srcset="" class="rounded-lg h-50" />
   <div class="p-6 flex flex-col gap-1">
     <p
       class="text-sm bg-blue-200 text-primary rounded-full flex w-1/4 items-center justify-center"
     >
-      lifestyle
+      {{ cat }}
     </p>
-    <h1 class="text-lg">this is title</h1>
+    <h1 class="text-lg">{{ title }}</h1>
     <p class="text-sm text-gray-500">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, minus
+      {{ description }}
     </p>
   </div>
 </div>

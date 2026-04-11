@@ -22,6 +22,8 @@ export class blog {
   description: string;
   @Column()
   category: string;
+  @Column()
+  image: string;
   @CreateDateColumn()
   created: string;
   @ManyToOne(() => user, (user) => user.blog, {

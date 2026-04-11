@@ -1,0 +1,6 @@
+::ng-deep .ql-toolbar.ql-snow {
+  display: none;
+}
+::ng-deep .ql-container.ql-snow {
+  border: 0;
+}

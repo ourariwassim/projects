@@ -15,4 +15,12 @@ export class CommentService {
   deleteComment(id: string) {
     return this.http.delete(this.url + '/deleteComment/' + id);
   }
+  createComment(userId: string, blogId: string, content: string) {
+    return this.http.post(
+      this.url + '/createComment/' + userId + '/' + blogId,
+      {
+        content,
+      },
+    );
+  }
 }

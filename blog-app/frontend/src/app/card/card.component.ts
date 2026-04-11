@@ -11,4 +11,7 @@ export class CardComponent {
   @Input() cat: string = '';
   @Input() description: string = '';
   @Input() image: string = '';
+  ngOnInit() {
+    console.log(this.image);
+  }
 }

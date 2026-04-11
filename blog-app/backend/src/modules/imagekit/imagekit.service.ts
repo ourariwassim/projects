@@ -16,10 +16,12 @@ export class imagekitService {
     });
   }
 
-  uploadImage(file: multer.file, blogId: string) {
-    this.imageKit.upload({
+  async uploadImage(file: multer.file, blogId: string): Promise<any> {
+    console.log(blogId);
+    const result = this.imageKit.upload({
       file: file.buffer,
       fileName: 'image' + blogId,
     });
+    return await result;
   }
 }

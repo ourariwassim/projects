@@ -1,0 +1,39 @@
+<div class="w-screen h-screen flex flex-col items-center gap-6">
+  <div class="text-primary pt-20 w-1/6 text-center">
+    Published on {{ blog.created.split("T")[0] }}
+  </div>
+  <div class="text-5xl w-1/2 text-center">{{ blog.title }}</div>
+  <p class="w-1/5 text-center">{{ blog.description }}</p>
+  <img [src]="blog.image" class="w-[80%]" alt="" srcset="" />
+  <div #editor></div>
+  <div class="w-[80%]">
+    @if (blog.comment.length != 0) {
+      <div>Comments:</div>
+    }
+
+    @for (c of blog.comment; track $index) {
+      <div class="bg-gray-100 min-h-20 flex w-1/2 mt-4 rounded-sm">
+        <div><img src="user_icon.svg" class="h-10 w-10 mt-3" alt="" /></div>
+        <div class="p-4 text-sm">
+          <div class="font-bold">{{ c.user.email }}</div>
+          <div class="text-sm">
+            {{ c.content }}
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  @if (connected) {
+    <div class="w-[80%]">
+      <textarea
+        name=""
+        id=""
+        placeholder="write your comment"
+        class="outline-none border border-gray-300 w-1/2 h-30"
+        #comment
+      ></textarea>
+      <app-button (click)="sendComment(comment.value)">Submit</app-button>
+    </div>
+  }
+  <app-footer class="w-full"></app-footer>
+</div>

@@ -7,6 +7,7 @@ import { DashboardHomeComponent } from './dashboard-home/dashboard-home.componen
 import { AddBlogComponentComponent } from './add-blog-component/add-blog-component.component';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { CommentsComponent } from './comments/comments.component';
+import { BlogShowcaseComponent } from './blog-showcase/blog-showcase.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,7 @@ export const routes: Routes = [
     path: 'signup',
     component: SignupComponent,
   },
+  { path: 'blogShowcase/:id', component: BlogShowcaseComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,

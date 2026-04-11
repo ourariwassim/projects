@@ -1,0 +1,12 @@
+::ng-deep .ql-toolbar {
+  display: flex;
+  justify-content: center;
+}
+::ng-deep .ql-toolbar.ql-snow {
+  width: 70%;
+}
+
+.ql-container.ql-snow {
+  width: 70%;
+  height: 30%;
+}

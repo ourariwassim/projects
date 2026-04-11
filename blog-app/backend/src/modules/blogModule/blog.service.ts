@@ -6,6 +6,7 @@ import { Repository } from 'typeorm';
 import { userService } from '../userModule/user.service';
 import { multer } from 'multer';
 import { imagekitService } from '../imagekit/imagekit.service';
+import { gemini } from '../gemini/gemini.service';
 
 @Injectable()
 export class blogService {
@@ -13,6 +14,7 @@ export class blogService {
     @InjectRepository(blog) private readonly blogRep: Repository<blog>,
     private readonly userService: userService,
     private readonly imagekitService: imagekitService,
+    private readonly geminiService: gemini,
   ) {}
 
   getBlogsById(id: string) {
@@ -24,13 +26,16 @@ export class blogService {
     file: multer.file,
   ) {
     const user = await this.userService.getUserById(userId);
+    const img = await this.imagekitService.uploadImage(file, '5');
     if (!user) return;
     const result = this.blogRep.create({
       ...createBlogDto,
+      image: img.url,
       user,
     });
-    this.imagekitService.uploadImage(file, result.id);
-    return this.blogRep.save(result);
+    const result1 = await this.blogRep.save(result);
+
+    return result1;
   }
   getLatestBlogsById(userId) {
     return this.blogRep.find({
@@ -40,7 +45,10 @@ export class blogService {
     });
   }
   getBlogById(blogId: string) {
-    return this.blogRep.findOneBy({ id: blogId });
+    return this.blogRep.findOne({
+      where: { id: blogId },
+      relations: ['comment', 'comment.user'],
+    });
   }
   async getBlogCount(userId: string) {
     return {
@@ -62,5 +70,16 @@ export class blogService {
       where: { comment: { user: { id: userId } } },
       relations: ['comment', 'comment.user'],
     });
+  }
+  async getAllBlogs(category: string) {
+    if (category == 'all') {
+      return await this.blogRep.find();
+    } else {
+      return await this.blogRep.findBy({ category });
+    }
+  }
+
+  generateBlog(content: string) {
+    return this.geminiService.main(content);
   }
 }

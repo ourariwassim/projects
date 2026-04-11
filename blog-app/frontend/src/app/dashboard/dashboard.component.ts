@@ -24,6 +24,11 @@ export class DashboardComponent {
     this.router.navigate(['/dashboard' + this.links[index].routerLink]);
   }
   logout() {
-    this.router.navigate(['login']);
+    localStorage.removeItem('id');
+    this.router.navigate(['']);
+  }
+  goHome() {
+    console.log('hi');
+    this.router.navigate(['']);
   }
 }

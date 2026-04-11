@@ -8,9 +8,16 @@ import { comment } from 'src/common/models/comment.entity';
 import { blogService } from '../blogModule/blog.service';
 import { userService } from '../userModule/user.service';
 import { imagekitService } from '../imagekit/imagekit.service';
+import { gemini } from '../gemini/gemini.service';
 
 @Module({
-  providers: [commentsService, blogService, userService, imagekitService],
+  providers: [
+    commentsService,
+    blogService,
+    userService,
+    imagekitService,
+    gemini,
+  ],
   controllers: [commentController],
   imports: [TypeOrmModule.forFeature([user, blog, comment])],
 })

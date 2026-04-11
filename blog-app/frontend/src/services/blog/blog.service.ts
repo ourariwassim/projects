@@ -33,4 +33,18 @@ export class BlogService {
       this.url + '/getUserComments/' + userId,
     );
   }
+  createBlog(userId: string, formData: FormData) {
+    return this.http.post(this.url + '/createBlog/' + userId, formData);
+  }
+  getBlogsOfAllUsers(category: string) {
+    return this.http.get<blog[]>(this.url + '/getAllBlogs/' + category);
+  }
+  getBlogById(id: string) {
+    return this.http.get<blog>(this.url + '/getBlogById/' + id);
+  }
+  generateBlog(title: string) {
+    return this.http.post<{ content: string }>(this.url + '/generateBlog', {
+      content: title,
+    });
+  }
 }

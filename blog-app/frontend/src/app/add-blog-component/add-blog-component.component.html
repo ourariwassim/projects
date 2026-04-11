@@ -1,1 +1,56 @@
-<p>add-blog-component works!</p>
+<div class="w-full h-full bg-blue-50/50 min-h-screen">
+  <div
+    class="w-1/2 h-full bg-white ml-20 shadow flex flex-col gap-4 pl-15 pt-15"
+  >
+    <label for="">Upload thumbnail:</label>
+    <label for="file">
+      @if (src) {
+        <img [src]="src" alt="" srcset="" />
+      } @else {
+        <img src="upload_area.svg" alt="" srcset="" />
+      }
+    </label>
+    <input
+      type="file"
+      id="file"
+      class="hidden"
+      #file
+      (change)="selecteFile($event)"
+    />
+    <label for="">Blog Title:</label>
+    <input
+      type="text"
+      placeholder="Type here"
+      class="border border-gray-300 placeholder-gray-400 rounded-sm w-2/3 h-10"
+      #title
+    />
+    <label for="">Description:</label>
+    <input
+      type="text"
+      placeholder="Type here"
+      class="border border-gray-300 placeholder-gray-400 rounded-sm w-2/3 h-10"
+      #description
+    />
+
+    <label for="">Content:</label>
+    <div #editor class="w-1/2 border-0"></div>
+    <app-button (click)="generateBlog(title.value)"
+      >Generate with Ai</app-button
+    >
+    <label for="">Blog Category</label>
+    <select name="" id="" class="w-1/4 border border-gray-300" #category>
+      <option value="" selected>Select category</option>
+      <option value="technology">Technology</option>
+      <option value="startup">Stratup</option>
+      <option value="lifestyle">LifeStyle</option>
+      <option value="finance">Finance</option>
+    </select>
+    <div class="w-2/3 flex justify-center">
+      <app-button
+        (click)="uploadBlog(title.value, description.value, category.value)"
+      >
+        Upload
+      </app-button>
+    </div>
+  </div>
+</div>
