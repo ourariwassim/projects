@@ -1,0 +1,64 @@
+<div class="px-30 flex flex-col gap-20">
+  <div class="border border-gray-300 flex justify-between items-stretch">
+    <div class="flex justify-center w-full items-center flex-col">
+      <div class="text-gray-700">
+        <div class="flex items-center gap-1">
+          <div class="w-11 h-0.5 bg-black"></div>
+          <div>OUR BESTSELLERS</div>
+        </div>
+        <div class="text-5xl">Latest Arrivals</div>
+        <div class="flex items-center gap-1">
+          <div>SHOP NOW</div>
+          <div class="w-11 h-0.5 bg-black"></div>
+        </div>
+      </div>
+    </div>
+    <img [src]="images.hero" alt="" class="w-1/2" />
+  </div>
+  <div class="flex flex-col gap-4">
+    <div class="text-3xl flex items-center justify-center gap-4">
+      <div><span class="text-gray-500">LATEST</span> COLLECTIONS</div>
+      <div class="h-1 w-11 bg-black"></div>
+    </div>
+    <div class="text-center">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
+      repellendus dolorum et unde minima molestiae consequuntur earum, neque
+    </div>
+    <div class="flex flex-wrap w-full gap-4 justify-between">
+      @for (i of ["", "", "", "", "", "", "", "", ""]; track $index) {
+        <app-item-card
+          class="w-1/5"
+          [description]="
+            'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
+          "
+          [image]="'assets/frontend_assets/p_img1.png'"
+          [price]="'80$'"
+        ></app-item-card>
+      }
+    </div>
+  </div>
+  <div class="flex justify-around">
+    @for (policy of policies; track $index) {
+      <app-policy
+        [image]="policy.image"
+        [title]="policy.title"
+        [description]="policy.description"
+      >
+      </app-policy>
+    }
+  </div>
+  <div class="flex flex-col items-center gap-6">
+    <div class="text-4xl">Subscribe now and get 20% off</div>
+    <p class="text-sm text-gray-500">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique optio
+    </p>
+    <div class="flex h-20 w-full justify-center">
+      <input
+        type="text"
+        class="outline-none border border-gray-200 h-15 w-1/3 pl-3"
+        placeholder="Enter your email"
+      />
+      <app-button [variant]="'primary'">SUBSCRIBE</app-button>
+    </div>
+  </div>
+</div>
