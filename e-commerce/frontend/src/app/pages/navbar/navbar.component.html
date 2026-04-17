@@ -6,15 +6,22 @@
       <app-button
         [variant]="'link'"
         [selected]="$index == posSelected"
-        (click)="elementSelected($index)"
+        (click)="elementSelected($index, element.link)"
       >
-        {{ element }}
+        {{ element.name }}
       </app-button>
     }
   </div>
   <div class="flex gap-4">
-    <img [src]="images.search" alt="" class="w-6 h-6" />
-    <img [src]="images.user" alt="" class="w-6 h-6" />
-    <img [src]="images.cart" alt="" class="w-6 h-6" />
+    <img [src]="images.search" alt="" class="w-6 h-6 cursor-pointer" />
+    <img [src]="images.user" alt="" class="w-6 h-6 cursor-pointer" />
+    <div class="relative" (click)="openCart()">
+      <img [src]="images.cart" alt="" class="w-6 h-6 cursor-pointer" />
+      <div
+        class="flex items-center justify-center rounded-full h-5 w-5 bg-black text-white text-xs absolute top-1/2 left-1/2"
+      >
+        {{ cartService.getSize$ | async }}
+      </div>
+    </div>
   </div>
 </div>

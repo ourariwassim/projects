@@ -17,9 +17,11 @@ export class ButtonComponent {
   buttonVariant: Record<variant, string> = {
     link: 'hover:scale-105 text-gray-700',
     primary: ' bg-black text-white',
+    secondary: 'text-black bg-gray-100',
   };
   buttonSize: Record<buttonSize, string> = {
     normal: 'px-10 h-15 flex items-center',
+    small: ' px-3 py-2 flex items-center',
   };
 
   useClass() {

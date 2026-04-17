@@ -8,6 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class ItemCardComponent {
   @Input() image = '';
-  @Input() description = '';
-  @Input() price = '';
+  @Input() name = '';
+  @Input() price = 0;
 }

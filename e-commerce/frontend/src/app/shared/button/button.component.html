@@ -1,6 +1,11 @@
 <div
   [class]="useClass()"
-  [ngClass]="variant == 'link' && selected ? 'border-b border-black' : ''"
+  [ngClass]="[
+    variant == 'link' && selected ? 'border-b border-black' : '',
+    variant == 'secondary' && selected
+      ? 'border border-orange-500'
+      : 'border border-transparent',
+  ]"
 >
   <ng-content> </ng-content>
 </div>
