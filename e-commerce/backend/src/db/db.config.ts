@@ -11,4 +11,6 @@ export const dbConfig = (
   username: configService.getOrThrow('DB_USER'),
   host: configService.getOrThrow('DB_HOST'),
   database: configService.getOrThrow('DB_NAME'),
+  autoLoadEntities: true,
+  synchronize: true,
 });
