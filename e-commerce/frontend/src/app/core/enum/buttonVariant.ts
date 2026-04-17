@@ -1,1 +1,1 @@
-export type variant = 'link' | 'primary';
+export type variant = 'link' | 'primary' | 'secondary';

@@ -6,7 +6,7 @@
           <div class="w-11 h-0.5 bg-black"></div>
           <div>OUR BESTSELLERS</div>
         </div>
-        <div class="text-5xl">Latest Arrivals</div>
+        <div class="text-5xl prata-regular">Latest Arrivals</div>
         <div class="flex items-center gap-1">
           <div>SHOP NOW</div>
           <div class="w-11 h-0.5 bg-black"></div>
@@ -16,23 +16,38 @@
     <img [src]="images.hero" alt="" class="w-1/2" />
   </div>
   <div class="flex flex-col gap-4">
-    <div class="text-3xl flex items-center justify-center gap-4">
-      <div><span class="text-gray-500">LATEST</span> COLLECTIONS</div>
-      <div class="h-1 w-11 bg-black"></div>
-    </div>
-    <div class="text-center">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores
-      repellendus dolorum et unde minima molestiae consequuntur earum, neque
-    </div>
-    <div class="flex flex-wrap w-full gap-4 justify-between">
-      @for (i of ["", "", "", "", "", "", "", "", ""]; track $index) {
+    <app-section-titles
+      [title]="'Latest Collections'"
+      [description]="
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat quo iusto facere nesciun'
+      "
+    ></app-section-titles>
+    <div class="grid grid-cols-5 w-full gap-4 justify-between">
+      @for (item of items; track $index) {
         <app-item-card
-          class="w-1/5"
-          [description]="
-            'Lorem ipsum dolor sit amet consectetur adipisicing elit.'
-          "
-          [image]="'assets/frontend_assets/p_img1.png'"
-          [price]="'80$'"
+          class="h-110"
+          [name]="item.name"
+          [image]="item.image[0]"
+          [price]="item.price"
+        ></app-item-card>
+      }
+    </div>
+  </div>
+  <div class="flex flex-col gap-4">
+    <app-section-titles
+      [title]="'BEST SELLERS'"
+      [description]="
+        'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat quo iusto facere nesciun'
+      "
+    ></app-section-titles>
+
+    <div class="grid grid-cols-5 w-full gap-4">
+      @for (item of items; track $index) {
+        <app-item-card
+          class="w-full h-110"
+          [name]="item.name"
+          [image]="item.image[0]"
+          [price]="item.price"
         ></app-item-card>
       }
     </div>

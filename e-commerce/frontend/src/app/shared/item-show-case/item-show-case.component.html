@@ -1,0 +1,75 @@
+<div class="mx-30 border-t border-gray-300 pt-5 flex gap-5">
+  <div class="flex flex-col gap-2 w-[8%]">
+    @for (image of item.image; track $index) {
+      <img
+        [src]="image"
+        alt=""
+        srcset=""
+        class="hover:scale-105 overflow-hidden duration-300"
+        (click)="changeImage(image)"
+      />
+    }
+  </div>
+  <div class="w-5/16">
+    <img [src]="imageToShow" alt="" class="h-full w-full" />
+  </div>
+  <div class="w-6/16 mt-5 flex flex-col gap-6">
+    <div class="text-2xl">{{ item.name }}</div>
+    <div class="flex gap-2 items-center">
+      @for (i of starsArray; track $index) {
+        @if ($index + 1 <= item.stars) {
+          <img [src]="images.starFull" alt="" class="w-3 h-3" />
+        } @else {
+          <img [src]="images.starDull" alt="" class="w-3 h-3" />
+        }
+      }
+      <div>({{ item.people }})</div>
+    </div>
+    <div class="text-2xl">{{ item.price }}$</div>
+    <div class="text-sm text-gray-500">{{ item.description }}</div>
+    <div>Select Size</div>
+    <div class="flex gap-2">
+      @for (size of sizes; track $index) {
+        <app-button
+          [size]="'small'"
+          [variant]="'secondary'"
+          [selected]="checkSelected(size)"
+          (click)="toggleSize(size)"
+          >{{ size }}</app-button
+        >
+      }
+    </div>
+    <div class="flex">
+      <app-button [variant]="'primary'" (click)="addToCart(item)">
+        Add to cart
+      </app-button>
+    </div>
+    <div
+      class="border-t border-gray-200 flex flex-col text-xs text-gray-400 gap-2"
+    >
+      <p class="mt-2">100% original product</p>
+      <p>cash on delivery is avaiable on this product</p>
+      <p>easy return and exhange policy with 7 days</p>
+    </div>
+  </div>
+</div>
+<div class="mx-30 mt-20">
+  <div class="flex">
+    <div class="border px-4 py-2 border-gray-200">Description</div>
+    <div class="border px-4 py-2 border-gray-200 text-gray-500">
+      Reviews(122)
+    </div>
+  </div>
+  <div class="px-4 py-10 border border-gray-200 text-gray-500">
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maiores itaque,
+    dolor quasi molestiae, esse sed provident nemo aperiam obcaecati, libero
+    error temporibus ut repellat harum adipisci pariatur laudantium voluptatum
+    natus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+    animi, eveniet enim veritatis nulla at, quidem voluptate sed necessitatibus
+    deleniti alias totam ratione tempore aspernatur. Natus at eveniet accusamus
+    optio. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur
+    facilis optio minima laboriosam qui facere iste eos, natus ea, dolore
+    mollitia error! Quaerat blanditiis accusantium necessitatibus quasi quod
+    tempore est!
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="h-40 border border-gray-200 p-4">
+  <div class="mb-3">{{ title }}</div>
+  @for (element of elements; track $index) {
+    <div class="flex gap-2 items-center">
+      <input type="checkbox" name="" [id]="element" />
+      <label
+        [for]="element"
+        class="text-gray-500 font-light"
+        (click)="emitFilter(element)"
+        >{{ element }}</label
+      >
+    </div>
+  }
+</div>

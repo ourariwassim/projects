@@ -3,14 +3,22 @@ import { GLOBAL_CONST } from '../../core/constant/Global.constant';
 import { ItemCardComponent } from '../../shared/item-card/item-card.component';
 import { PolicyComponent } from '../../shared/policy/policy.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { SectionTitlesComponent } from '../../shared/section-titles/section-titles.component';
+import { items } from '../../core/constant/items';
 
 @Component({
   selector: 'app-home',
-  imports: [ItemCardComponent, PolicyComponent, ButtonComponent],
+  imports: [
+    ItemCardComponent,
+    PolicyComponent,
+    ButtonComponent,
+    SectionTitlesComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
+  items = items;
   images = {
     hero: GLOBAL_CONST.FRONTEND_ASSETS + 'hero_img.png',
   };

@@ -1,0 +1,41 @@
+<div class="mx-30 border-t border-gray-300 pt-10 flex gap-10">
+  <div class="flex flex-col gap-4 w-1/6">
+    <div class="text-2xl font-light">Filters</div>
+    <app-filters
+      [elements]="['Men', 'Women', 'Kids']"
+      [title]="'Categories'"
+      (filter)="filterByCategories($event)"
+    ></app-filters>
+    <app-filters
+      [elements]="['Topwear', 'Bottomwear', 'Winterwear']"
+      [title]="'Type'"
+      (filter)="filterByType($event)"
+    ></app-filters>
+  </div>
+  <div class="w-6/7 flex flex-col gap-4">
+    <div class="flex justify-between">
+      <div class="flex items-center text-2xl">
+        ALL COLLECTIONS
+        <div class="w-11 h-0.5 bg-black"></div>
+      </div>
+      <div>
+        <select #sort class="outline-none" (change)="sortItems(sort.value)">
+          <option value="">Sort by: Relevant</option>
+          <option value="low">Sort by: Low to High</option>
+          <option value="high">Sort by: High to Low</option>
+        </select>
+      </div>
+    </div>
+    <div class="grid grid-cols-4 w-full gap-4">
+      @for (item of items; track $index) {
+        <app-item-card
+          class="w-full h-110"
+          [name]="item.name"
+          [image]="item.image[0]"
+          [price]="item.price"
+          (click)="nevigateToShowCase(item._id)"
+        ></app-item-card>
+      }
+    </div>
+  </div>
+</div>
